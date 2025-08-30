@@ -1,0 +1,22 @@
+{
+  "events": [
+    {
+      "name": "practice_start"
+    },
+    {
+      "name": "practice_complete"
+    },
+    {
+      "name": "book_open"
+    },
+    {
+      "name": "chant_play"
+    },
+    {
+      "name": "donation_initiated"
+    },
+    {
+      "name": "donation_success"
+    }
+  ]
+}
