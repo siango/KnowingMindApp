@@ -1,7 +1,8 @@
-name: deploy-cloud-run
+﻿name: deploy-cloud-run
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -10,28 +11,60 @@ permissions:
 env:
   GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   GCP_REGION: ${{ secrets.GCP_REGION }}
-  GCP_SA_EMAIL: ${{ secrets.GCP_SA_EMAIL }}
-  WIF_PROVIDER: ${{ secrets.GCP_WIF_PROVIDER }}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        service: [ "arunroo-ics", "satishift-webhook", "kma-api" ]
+        include:
+          - service: arunroo-ics
+            path: services/arunroo-ics
+            env: NODE_ENV=production,PORT=3000
+            port: "3000"
+          - service: satishift-webhook
+            path: services/satishift-webhook
+            env: NODE_ENV=production,PORT=4000
+            port: "4000"
+          - service: kma-api
+            path: services/kma-api
+            env: NODE_ENV=production,ENABLE_FIRESTORE=true,PORT=5000
+            port: "5000"
+
     steps:
       - uses: actions/checkout@v4
-      - uses: google-github-actions/auth@v2
+
+      - name: Auth via Workload Identity Federation
+        uses: google-github-actions/auth@v2
         with:
-          workload_identity_provider: ${{ env.WIF_PROVIDER }}
-          service_account: ${{ env.GCP_SA_EMAIL }}
+          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
+          service_account: ${{ secrets.GCP_SA_EMAIL }}
+
       - uses: google-github-actions/setup-gcloud@v2
-      - name: Deploy ${{ matrix.service }} to Cloud Run (source deploy)
+
+      - name: Ensure required APIs
         run: |
-          gcloud run deploy ${{ matrix.service }} \
-            --source services/${{ matrix.service }} \
-            --region "${GCP_REGION}" \
+          gcloud services enable run.googleapis.com artifactregistry.googleapis.com cloudbuild.googleapis.com --project "$GCP_PROJECT_ID"
+
+      - name: Ensure Artifact Registry repo exists
+        run: |
+          gcloud artifacts repositories describe run --location "$GCP_REGION" --project "$GCP_PROJECT_ID" || \
+          gcloud artifacts repositories create run --repository-format=docker --location "$GCP_REGION" --description="Images for Cloud Run"
+
+      - name: Build with Cloud Build
+        id: build
+        run: |
+          IMAGE="${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/run/${{ matrix.service }}:${{ github.sha }}"
+          echo "IMAGE=$IMAGE" >> $GITHUB_OUTPUT
+          gcloud builds submit "${{ matrix.path }}" --tag "$IMAGE" --project "$GCP_PROJECT_ID"
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy "${{ matrix.service }}" \
+            --image "${{ steps.build.outputs.IMAGE }}" \
+            --region "$GCP_REGION" \
+            --project "$GCP_PROJECT_ID" \
             --allow-unauthenticated \
-            --ingress all \
-            --set-env-vars="NODE_ENV=production"
-        shell: bash
+            --port "${{ matrix.port }}" \
+            --set-env-vars "${{ matrix.env }}"
