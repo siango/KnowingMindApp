@@ -1,3 +1,4 @@
+﻿import { mountHealth } from './health';
 import express from "express";
 import crypto from "crypto";
 const app = express();
@@ -43,3 +44,6 @@ app.post("/line/webhook", (req, res) => {
 
 const port = Number(process.env.PORT || 8081);
 app.listen(port, () => console.log(`satishift-webhook listening on :${port}`));
+
+
+mountHealth(app);
