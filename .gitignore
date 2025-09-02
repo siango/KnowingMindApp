@@ -37,3 +37,7 @@ Thumbs.db
 app/google-services.json
 **/google-services.json
 
+
+media/**
+assets/audio/**
+
