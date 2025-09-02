@@ -1,10 +1,22 @@
 {
-  "name": "satishift-fullstack",
-  "version": "0.1.0",
-  "type": "module",
-  "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only --esm src/index.ts",
-    "build": "tsc -p tsconfig.json",
-    "start": "node dist/index.js"
-  }
+    "name":  "satishift-fullstack",
+    "version":  "0.1.0",
+    "type":  "module",
+    "scripts":  {
+                    "dev":  "cross-env PORT=8082 tsx watch src/index.ts",
+                    "build":  "tsc -p tsconfig.json",
+                    "start":  "node dist/index.js",
+                    "gcp-build":  "tsc"
+                },
+    "devDependencies":  {
+                            "@types/express":  "^4.17.23",
+                            "@types/node":  "^20.19.11",
+                            "cross-env":  "^10.0.0",
+                            "ts-node-dev":  "^2.0.0",
+                            "tsx":  "^4.20.5",
+                            "typescript":  "^5.9.2"
+                        },
+    "dependencies":  {
+                         "express":  "^4.21.2"
+                     }
 }
