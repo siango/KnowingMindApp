@@ -1,0 +1,25 @@
+﻿name: Verify Tools
+
+on:
+  pull_request:
+    branches: [ main, master ]
+  push:
+    branches: [ "wip/**" ]
+
+jobs:
+  verify:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run verify-tools.ps1
+        shell: pwsh
+        run: |
+          Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+          if (!(Test-Path ".\tools\verify-tools.ps1")) {
+            Write-Error "tools\verify-tools.ps1 not found" ; exit 1
+          }
+          .\tools\verify-tools.ps1
