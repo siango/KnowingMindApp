@@ -1,0 +1,250 @@
+2025-09-02T19:41:10: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:10: PM2 log: App [siang:0] online
+2025-09-02T19:41:10: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:10: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:10: PM2 log: App [siang:0] online
+2025-09-02T19:41:10: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:10: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:10: PM2 log: App [siang:0] online
+2025-09-02T19:41:10: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:10: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:10: PM2 log: App [siang:0] online
+2025-09-02T19:41:10: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:10: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:10: PM2 log: App [siang:0] online
+2025-09-02T19:41:11: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:11: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:11: PM2 log: App [siang:0] online
+2025-09-02T19:41:11: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:11: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:11: PM2 log: App [siang:0] online
+2025-09-02T19:41:11: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:11: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:11: PM2 log: App [siang:0] online
+2025-09-02T19:41:11: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:11: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:11: PM2 log: App [siang:0] online
+2025-09-02T19:41:11: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:11: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:11: PM2 log: App [siang:0] online
+2025-09-02T19:41:11: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:11: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:11: PM2 log: App [siang:0] online
+2025-09-02T19:41:12: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:12: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:12: PM2 log: App [siang:0] online
+2025-09-02T19:41:12: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:12: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:12: PM2 log: App [siang:0] online
+2025-09-02T19:41:12: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:12: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:12: PM2 log: App [siang:0] online
+2025-09-02T19:41:12: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:12: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:12: PM2 log: App [siang:0] online
+2025-09-02T19:41:12: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:12: PM2 log: App [siang:0] starting in -fork mode-
+2025-09-02T19:41:12: PM2 log: App [siang:0] online
+2025-09-02T19:41:12: PM2 log: App [siang:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:41:12: PM2 log: Script C:\AndroidProjects\KnowingMindSuite\AUSVIVO15_AA\siang had too many unstable restarts (16). Stopped. "errored"
+2025-09-02T19:42:51: PM2 log: App [n8n:1] starting in -fork mode-
+2025-09-02T19:42:51: PM2 log: App [n8n:1] online
+2025-09-02T19:42:52: PM2 error: Error caught while calling pidusage
+2025-09-02T19:42:52: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:42:52: PM2 error: Error caught while calling pidusage
+2025-09-02T19:42:52: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:42:52: PM2 error: Error caught while calling pidusage
+2025-09-02T19:42:52: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:42:52: PM2 log: App [n8n:2] starting in -fork mode-
+2025-09-02T19:42:52: PM2 log: App [n8n:2] online
+2025-09-02T19:42:52: PM2 error: Error caught while calling pidusage
+2025-09-02T19:42:52: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:42:52: PM2 error: Error caught while calling pidusage
+2025-09-02T19:42:52: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:42:52: PM2 error: Error caught while calling pidusage
+2025-09-02T19:42:52: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:42:53: PM2 error: Error caught while calling pidusage
+2025-09-02T19:42:53: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:42:53: PM2 error: Error caught while calling pidusage
+2025-09-02T19:42:53: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:42:53: PM2 error: Error caught while calling pidusage
+2025-09-02T19:42:53: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:43:09: PM2 error: Error caught while calling pidusage
+2025-09-02T19:43:09: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:43:39: PM2 error: Error caught while calling pidusage
+2025-09-02T19:43:39: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:44:09: PM2 error: Error caught while calling pidusage
+2025-09-02T19:44:09: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:44:39: PM2 error: Error caught while calling pidusage
+2025-09-02T19:44:39: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:45:05: PM2 error: Error caught while calling pidusage
+2025-09-02T19:45:05: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:45:09: PM2 error: Error caught while calling pidusage
+2025-09-02T19:45:09: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:45:39: PM2 error: Error caught while calling pidusage
+2025-09-02T19:45:39: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:46:09: PM2 error: Error caught while calling pidusage
+2025-09-02T19:46:09: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:46:39: PM2 error: Error caught while calling pidusage
+2025-09-02T19:46:39: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:47:09: PM2 error: Error caught while calling pidusage
+2025-09-02T19:47:09: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:47:35: PM2 error: Error caught while calling pidusage
+2025-09-02T19:47:35: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:47:35: PM2 log: Stopping app:siang id:0
+2025-09-02T19:47:35: PM2 error: app=siang id=0 does not have a pid
+2025-09-02T19:47:35: PM2 log: Stopping app:n8n id:1
+2025-09-02T19:47:35: PM2 log: Stopping app:n8n id:2
+2025-09-02T19:47:36: PM2 log: App [n8n:2] exited with code [1] via signal [SIGINT]
+2025-09-02T19:47:36: PM2 log: App [n8n:1] exited with code [1] via signal [SIGINT]
+2025-09-02T19:47:36: PM2 log: pid=12688 msg=process killed
+2025-09-02T19:47:36: PM2 log: pid=13296 msg=process killed
+2025-09-02T19:47:37: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:47:37: PM2 log: App [n8n:0] online
+2025-09-02T19:47:37: PM2 error: Error caught while calling pidusage
+2025-09-02T19:47:37: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:47:37: PM2 error: Error caught while calling pidusage
+2025-09-02T19:47:37: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:47:37: PM2 error: Error caught while calling pidusage
+2025-09-02T19:47:37: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:47:38: PM2 error: Error caught while calling pidusage
+2025-09-02T19:47:38: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:47:39: PM2 error: Error caught while calling pidusage
+2025-09-02T19:47:39: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:48:00: PM2 error: Error caught while calling pidusage
+2025-09-02T19:48:00: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:48:00: PM2 error: Error caught while calling pidusage
+2025-09-02T19:48:00: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:48:01: PM2 error: Error caught while calling pidusage
+2025-09-02T19:48:01: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:48:09: PM2 error: Error caught while calling pidusage
+2025-09-02T19:48:09: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:48:39: PM2 error: Error caught while calling pidusage
+2025-09-02T19:48:39: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:49:09: PM2 error: Error caught while calling pidusage
+2025-09-02T19:49:09: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:49:40: PM2 error: Error caught while calling pidusage
+2025-09-02T19:49:40: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:50:10: PM2 error: Error caught while calling pidusage
+2025-09-02T19:50:10: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:50:38: PM2 error: Error caught while calling pidusage
+2025-09-02T19:50:38: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:50:38: PM2 log: Stopping app:n8n id:0
+2025-09-02T19:50:39: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:50:39: PM2 log: pid=13316 msg=process killed
+2025-09-02T19:53:04: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:04: PM2 log: App [n8n:0] online
+2025-09-02T19:53:04: PM2 error: Error caught while calling pidusage
+2025-09-02T19:53:04: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:53:04: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:04: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:04: PM2 log: App [n8n:0] online
+2025-09-02T19:53:04: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:04: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:04: PM2 error: Error [ERR_STREAM_DESTROYED]: Cannot call write after a stream was destroyed
+2025-09-02T19:53:04: PM2 log: App [n8n:0] online
+2025-09-02T19:53:04: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:04: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:04: PM2 log: App [n8n:0] online
+2025-09-02T19:53:05: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:05: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:05: PM2 log: App [n8n:0] online
+2025-09-02T19:53:05: PM2 error: Error caught while calling pidusage
+2025-09-02T19:53:05: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:53:05: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:05: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:05: PM2 log: App [n8n:0] online
+2025-09-02T19:53:05: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:05: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:05: PM2 log: App [n8n:0] online
+2025-09-02T19:53:05: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:05: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:05: PM2 log: App [n8n:0] online
+2025-09-02T19:53:05: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:05: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:05: PM2 log: App [n8n:0] online
+2025-09-02T19:53:05: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:05: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:05: PM2 log: App [n8n:0] online
+2025-09-02T19:53:05: PM2 error: Error caught while calling pidusage
+2025-09-02T19:53:05: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:53:05: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:05: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:05: PM2 log: App [n8n:0] online
+2025-09-02T19:53:06: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:06: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:06: PM2 log: App [n8n:0] online
+2025-09-02T19:53:06: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:06: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:06: PM2 log: App [n8n:0] online
+2025-09-02T19:53:06: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:06: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:06: PM2 log: App [n8n:0] online
+2025-09-02T19:53:06: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:06: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:06: PM2 log: App [n8n:0] online
+2025-09-02T19:53:06: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:06: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:53:06: PM2 log: App [n8n:0] online
+2025-09-02T19:53:06: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T19:53:06: PM2 log: Script C:\Users\siang.AUSVIVO15_AA\AppData\Roaming\npm\n8n.cmd had too many unstable restarts (16). Stopped. "errored"
+2025-09-02T19:54:55: PM2 log: Stopping app:n8n id:0
+2025-09-02T19:54:55: PM2 error: app=n8n id=0 does not have a pid
+2025-09-02T19:57:19: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T19:57:19: PM2 log: App [n8n:0] online
+2025-09-02T19:57:19: PM2 error: Error caught while calling pidusage
+2025-09-02T19:57:19: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:57:19: PM2 error: Error caught while calling pidusage
+2025-09-02T19:57:19: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:57:19: PM2 error: Error caught while calling pidusage
+2025-09-02T19:57:19: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:57:19: PM2 log: App [n8n:1] starting in -fork mode-
+2025-09-02T19:57:19: PM2 log: App [n8n:1] online
+2025-09-02T19:57:19: PM2 error: Error caught while calling pidusage
+2025-09-02T19:57:19: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:57:20: PM2 error: Error caught while calling pidusage
+2025-09-02T19:57:20: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:57:20: PM2 error: Error caught while calling pidusage
+2025-09-02T19:57:20: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:57:21: PM2 error: Error caught while calling pidusage
+2025-09-02T19:57:21: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:57:40: PM2 error: Error caught while calling pidusage
+2025-09-02T19:57:40: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:58:10: PM2 error: Error caught while calling pidusage
+2025-09-02T19:58:10: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:58:40: PM2 error: Error caught while calling pidusage
+2025-09-02T19:58:40: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:59:10: PM2 error: Error caught while calling pidusage
+2025-09-02T19:59:10: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T19:59:40: PM2 error: Error caught while calling pidusage
+2025-09-02T19:59:40: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T20:00:04: PM2 error: Error caught while calling pidusage
+2025-09-02T20:00:04: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T20:00:04: PM2 log: Stopping app:n8n id:0
+2025-09-02T20:00:04: PM2 log: Stopping app:n8n id:1
+2025-09-02T20:00:05: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T20:00:05: PM2 log: App [n8n:1] exited with code [1] via signal [SIGINT]
+2025-09-02T20:00:05: PM2 log: pid=7472 msg=process killed
+2025-09-02T20:00:05: PM2 log: pid=17220 msg=process killed
+2025-09-02T20:01:27: PM2 log: App [n8n:0] starting in -fork mode-
+2025-09-02T20:01:27: PM2 log: App [n8n:0] online
+2025-09-02T20:01:27: PM2 error: Error caught while calling pidusage
+2025-09-02T20:01:27: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T20:01:28: PM2 error: Error caught while calling pidusage
+2025-09-02T20:01:28: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T20:01:29: PM2 error: Error caught while calling pidusage
+2025-09-02T20:01:29: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T20:01:40: PM2 error: Error caught while calling pidusage
+2025-09-02T20:01:40: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T20:02:10: PM2 error: Error caught while calling pidusage
+2025-09-02T20:02:10: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T20:02:40: PM2 error: Error caught while calling pidusage
+2025-09-02T20:02:40: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T20:03:10: PM2 error: Error caught while calling pidusage
+2025-09-02T20:03:10: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T20:03:29: PM2 error: Error caught while calling pidusage
+2025-09-02T20:03:29: PM2 error: Error: Error: spawn wmic ENOENT
+2025-09-02T20:03:29: PM2 log: Stopping app:n8n id:0
+2025-09-02T20:03:29: PM2 log: App [n8n:0] exited with code [1] via signal [SIGINT]
+2025-09-02T20:03:29: PM2 log: pid=15156 msg=process killed
+2025-09-02T20:03:30: PM2 log: PM2 successfully stopped

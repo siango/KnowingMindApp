@@ -1,66 +1,115 @@
-name: deploy-cloud-run
+name: Deploy Cloud Run (KnowingMindSuite)
+
 on:
   push:
     branches: [ main ]
+    paths:
+      - "services/**"
+      - ".github/workflows/deploy-cloud-run.yml"
   workflow_dispatch:
-
-permissions:
-  id-token: write
-  contents: read
-
-env:
-  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  GCP_REGION:     ${{ secrets.GCP_REGION }}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    # === แก้ค่าตามโปรเจกต์ของคุณ ===
+    env:
+      GCP_PROJECT_ID: knowing-mind-app
+      GCP_REGION: asia-southeast1
+      ARTIFACT_REPO: run   # ชื่อ repo ใน Artifact Registry (ประเภท docker)
+      # WIF settings (มีอยู่แล้วตามบันทึก)
+      WIF_PROVIDER: projects/610232224779/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+      WIF_SERVICE_ACCOUNT: cicd-deployer@knowing-mind-app.iam.gserviceaccount.com
+
     strategy:
+      fail-fast: false
       matrix:
         include:
-          - service: arunroo-ics
+          # ── Public services ─────────────────────────────────────────────
+          - name: arunroo-ics
             path: services/arunroo-ics
-            port: "3000"
-            env: NODE_ENV=production
-          - service: satishift-webhook
+            ping: /api/ping
+            public: "true"
+          - name: satishift-webhook
             path: services/satishift-webhook
-            port: "4000"
-            env: NODE_ENV=production
-          - service: kma-api
+            ping: /api/ping
+            public: "true"
+
+          # ── Internal service (ไม่มี ping สาธารณะ) ──────────────────────
+          - name: kma-api
             path: services/kma-api
-            port: "5000"
-            env: NODE_ENV=production,ENABLE_FIRESTORE=true
+            ping: /api/ping
+            public: "false"
+
+          # (ตัวเลือกเสริม ถ้ามี)
+          # - name: satishift-fullstack
+          #   path: SatiShiftApp/fullstack_node_ts
+          #   ping: /health
+          #   public: "true"
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'   # จำเป็นสำหรับ WIF
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Auth via WIF
+      - name: Auth to Google Cloud (WIF)
         uses: google-github-actions/auth@v2
         with:
-          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
-          service_account:           ${{ secrets.GCP_SA_EMAIL }}
+          workload_identity_provider: ${{ env.WIF_PROVIDER }}
+          service_account: ${{ env.WIF_SERVICE_ACCOUNT }}
 
-      - uses: google-github-actions/setup-gcloud@v2
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
 
-      - name: Ensure Artifact Registry
+      - name: Print gcloud info
         run: |
-          gcloud services enable run.googleapis.com artifactregistry.googleapis.com cloudbuild.googleapis.com --project "$GCP_PROJECT_ID"
-          gcloud artifacts repositories describe run --location "$GCP_REGION" --project "$GCP_PROJECT_ID" || \
-          gcloud artifacts repositories create run --repository-format=docker --location "$GCP_REGION" --description="Images for Cloud Run"
+          gcloud --version
+          gcloud config set project "${GCP_PROJECT_ID}"
+          gcloud config set run/region "${GCP_REGION}"
 
-      - name: Build & Push (Cloud Build)
-        id: build
+      # Build & Deploy (Cloud Buildpacks via --source)
+      - name: Deploy ${{ matrix.name }}
+        working-directory: ${{ matrix.path }}
         run: |
-          IMAGE="${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/run/${{ matrix.service }}:${{ github.sha }}"
-          echo "IMAGE=$IMAGE" >> $GITHUB_OUTPUT
-          gcloud builds submit "${{ matrix.path }}" --tag "$IMAGE" --project "$GCP_PROJECT_ID"
+          echo "Deploying service: ${{ matrix.name }} from $PWD"
 
-      - name: Deploy
+          # หมายเหตุ: ห้ามตั้งค่า PORT เองเมื่อใช้ buildpacks
+          gcloud run deploy "${{ matrix.name }}" \
+            --source . \
+            --region "${GCP_REGION}" \
+            --project "${GCP_PROJECT_ID}" \
+            --quiet
+
+          # ตั้งนโยบายการเข้าถึง (public หรือไม่)
+          if [ "${{ matrix.public }}" = "true" ]; then
+            gcloud run services add-iam-policy-binding "${{ matrix.name }}" \
+              --region "${GCP_REGION}" \
+              --member="allUsers" \
+              --role="roles/run.invoker" \
+              --quiet
+          else
+            echo "Skipping public IAM for internal service: ${{ matrix.name }}"
+          fi
+
+      # Smoke test (เฉพาะ public)
+      - name: Smoke test (public) ${{ matrix.name }}
+        if: ${{ matrix.public == 'true' }}
         run: |
-          gcloud run deploy "${{ matrix.service }}" \
-            --image "${{ steps.build.outputs.IMAGE }}" \
-            --region "$GCP_REGION" \
-            --project "$GCP_PROJECT_ID" \
-            --allow-unauthenticated \
-            --port "${{ matrix.port }}" \
-            --set-env-vars "${{ matrix.env }}"
+          set -e
+          URL=$(gcloud run services describe "${{ matrix.name }}" \
+            --region "${GCP_REGION}" \
+            --format="value(status.url)")
+          echo "Service URL: $URL"
+
+          # ใช้ /api/ping หรือ /health ตาม matrix.ping
+          curl -fsS "${URL}${{ matrix.ping }}" -m 15 -w "\nHTTP %{http_code}\n"
+
+      # สำหรับ internal service (เช่น kma-api) — ข้ามการยิงจาก public
+      - name: Note for internal service
+        if: ${{ matrix.public != 'true' }}
+        run: |
+          echo "Internal service '${{ matrix.name }}' deployed."
+          echo "Add an internal smoke test later (Workflows/Scheduler with OIDC) if needed."
