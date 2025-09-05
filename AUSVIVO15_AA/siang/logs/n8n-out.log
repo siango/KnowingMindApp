@@ -1,0 +1,63 @@
+2025-09-02T19:39:02: Initializing n8n process
+2025-09-02T19:39:03: n8n ready on ::, port 5678
+2025-09-02T19:39:03: Migrations in progress, please do NOT stop the process.
+2025-09-02T19:39:03: Starting migration AddScopeTables1750252139166
+2025-09-02T19:39:03: Finished migration AddScopeTables1750252139166
+2025-09-02T19:39:03: Starting migration AddRolesTables1750252139167
+2025-09-02T19:39:03: Finished migration AddRolesTables1750252139167
+2025-09-02T19:39:03: Starting migration LinkRoleToUserTable1750252139168
+2025-09-02T19:39:03: Finished migration LinkRoleToUserTable1750252139168
+2025-09-02T19:39:03: Starting migration CreateDataStoreTables1754475614601
+2025-09-02T19:39:04: Finished migration CreateDataStoreTables1754475614601
+2025-09-02T19:39:04: 
+2025-09-02T19:39:04: There are deprecations related to your environment variables. Please take the recommended actions to update your configuration:
+2025-09-02T19:39:04:  - DB_SQLITE_POOL_SIZE -> Running SQLite without a pool of read connections is deprecated. Please set `DB_SQLITE_POOL_SIZE` to a value higher than zero. See: https://docs.n8n.io/hosting/configuration/environment-variables/database/#sqlite
+2025-09-02T19:39:04:  - N8N_RUNNERS_ENABLED -> Running n8n without task runners is deprecated. Task runners will be turned on by default in a future version. Please set `N8N_RUNNERS_ENABLED=true` to enable task runners now and avoid potential issues in the future. Learn more: https://docs.n8n.io/hosting/configuration/task-runners/
+2025-09-02T19:39:04:  - N8N_BLOCK_ENV_ACCESS_IN_NODE -> The default value of N8N_BLOCK_ENV_ACCESS_IN_NODE will be changed from false to true in a future version. If you need to access environment variables from the Code Node or from expressions, please set N8N_BLOCK_ENV_ACCESS_IN_NODE=false. Learn more: https://docs.n8n.io/hosting/configuration/environment-variables/security/
+2025-09-02T19:39:04: 
+2025-09-02T19:39:04: Initializing AuthRolesService...
+2025-09-02T19:39:04: Updating 120 scopes...
+2025-09-02T19:39:04: Scopes updated successfully.
+2025-09-02T19:39:04: Updating 3 global roles...
+2025-09-02T19:39:04: global roles updated successfully.
+2025-09-02T19:39:04: Updating 4 project roles...
+2025-09-02T19:39:04: project roles updated successfully.
+2025-09-02T19:39:04: Updating 2 credential roles...
+2025-09-02T19:39:04: credential roles updated successfully.
+2025-09-02T19:39:04: Updating 2 workflow roles...
+2025-09-02T19:39:04: workflow roles updated successfully.
+2025-09-02T19:39:04: AuthRolesService initialized successfully.
+2025-09-02T19:39:04: [license SDK] Skipping renewal on init: license cert is not initialized
+2025-09-02T19:39:11: Version: 1.109.1
+2025-09-02T19:39:12: 
+2025-09-02T19:39:12: Editor is now accessible via:
+2025-09-02T19:39:12: http://0.0.0.0:5678
+2025-09-02T19:43:08: Initializing n8n process
+2025-09-02T19:43:09: n8n ready on ::, port 5678
+2025-09-02T19:43:09: 
+2025-09-02T19:43:09: There are deprecations related to your environment variables. Please take the recommended actions to update your configuration:
+2025-09-02T19:43:09:  - DB_SQLITE_POOL_SIZE -> Running SQLite without a pool of read connections is deprecated. Please set `DB_SQLITE_POOL_SIZE` to a value higher than zero. See: https://docs.n8n.io/hosting/configuration/environment-variables/database/#sqlite
+2025-09-02T19:43:09:  - N8N_RUNNERS_ENABLED -> Running n8n without task runners is deprecated. Task runners will be turned on by default in a future version. Please set `N8N_RUNNERS_ENABLED=true` to enable task runners now and avoid potential issues in the future. Learn more: https://docs.n8n.io/hosting/configuration/task-runners/
+2025-09-02T19:43:09:  - N8N_BLOCK_ENV_ACCESS_IN_NODE -> The default value of N8N_BLOCK_ENV_ACCESS_IN_NODE will be changed from false to true in a future version. If you need to access environment variables from the Code Node or from expressions, please set N8N_BLOCK_ENV_ACCESS_IN_NODE=false. Learn more: https://docs.n8n.io/hosting/configuration/environment-variables/security/
+2025-09-02T19:43:09: 
+2025-09-02T19:43:10: Initializing AuthRolesService...
+2025-09-02T19:43:10: AuthRolesService initialized successfully.
+2025-09-02T19:43:10: [license SDK] Skipping renewal on init: license cert is not initialized
+2025-09-02T19:43:16: Version: 1.109.1
+2025-09-02T19:43:16: 
+2025-09-02T19:43:16: Editor is now accessible via:
+2025-09-02T19:43:16: http://localhost:5678
+2025-09-02T19:47:49: Initializing n8n process
+2025-09-02T19:47:50: n8n ready on ::, port 5678
+2025-09-02T19:47:51: n8n Task Broker ready on 127.0.0.1, port 5679
+2025-09-02T19:47:51: Initializing AuthRolesService...
+2025-09-02T19:47:51: AuthRolesService initialized successfully.
+2025-09-02T19:47:51: [license SDK] Skipping renewal on init: license cert is not initialized
+2025-09-02T19:47:56: Registered runner "JS Task Runner" (xorcHz_urQKt06lgooGvi) 
+2025-09-02T19:47:56: Version: 1.109.1
+2025-09-02T19:47:56: 
+2025-09-02T19:47:56: Editor is now accessible via:
+2025-09-02T19:47:56: http://localhost:5678
+2025-09-02T20:01:27: Microsoft Windows [Version 10.0.26100.4652]
+2025-09-02T20:01:27: (c) Microsoft Corporation. All rights reserved.
+2025-09-02T20:01:27: 
