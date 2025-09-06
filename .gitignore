@@ -44,3 +44,7 @@ assets/audio/**
 
 out/**
 
+
+# Local health-check logs
+check-all-*.log
+check-lite.session.txt
