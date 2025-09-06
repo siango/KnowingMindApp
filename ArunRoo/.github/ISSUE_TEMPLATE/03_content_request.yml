@@ -1,0 +1,13 @@
+name: Content request
+description: ขอเพิ่ม/แก้ไขคอนเทนต์
+title: "[Content] "
+labels: ["content"]
+body:
+  - type: textarea
+    id: brief
+    attributes:
+      label: บรีฟ
+  - type: input
+    id: schedule
+    attributes:
+      label: เวลาที่ต้องการโพสต์ (ถ้ามี)

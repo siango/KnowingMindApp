@@ -1,0 +1,6 @@
+Title,Body,Labels
+"[Docs] เติมรายละเอียด README","เพิ่ม Quickstart, โครงสร้างไฟล์, ภาพรวมเวิร์กโฟลว์","docs,task"
+"[Docs] ARCHITECTURE","สรุปสถาปัตยกรรมและไดอะแกรม","docs,task"
+"[Workflow] Monthly Setup","อ่านตารางคำคม สร้างคิว โยงเวลา","workflow,task"
+"[Workflow] Daily Publisher","โพสต์อัตโนมัติ + เก็บลิงก์ผลลัพธ์","workflow,task"
+"[Content] มาตรฐานคอนเทนต์","กำหนดฟ้อนต์ โลโก้ สัดส่วนภาพ แฮชแท็ก","content,task"

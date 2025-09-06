@@ -1,0 +1,19 @@
+﻿# Build/IDE
+.gradle/
+**/build/
+.idea/
+*.iml
+node_modules/
+dist/
+out/
+
+# Secrets
+.env
+.env.*
+keystore.jks
+keystore.properties
+# google-services.json  # keep local; avoid pushing on public repos
+
+# OS
+.DS_Store
+Thumbs.db

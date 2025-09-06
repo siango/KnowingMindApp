@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="900" viewBox="0 0 2400 900">
+  <defs>
+    <style>
+      .c { fill: none; stroke: #E6C85A; stroke-width: 28; stroke-linecap: round; stroke-linejoin: round; }
+      .l { fill: none; stroke: #E6C85A; stroke-width: 22; stroke-linecap: round; stroke-linejoin: round; }
+      .m { fill: none; stroke: #E6C85A; stroke-width: 18; stroke-linecap: round; stroke-linejoin: round; }
+      .s { fill: none; stroke: #E6C85A; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
+      .t { fill: #E6C85A; font-size: 220px; font-weight: 700; font-family: "Sarabun","Noto Sans Thai","DejaVu Sans",sans-serif; }
+    </style>
+  </defs>
+  <!-- symbol -->
+  <circle class="c" cx="450" cy="450" r="320" />
+  <path class="l" d="M 450 340
+    C 300 410, 300 560, 450 640
+    C 600 560, 600 410, 450 340 Z" />
+  <line class="m" x1="450" y1="370" x2="450" y2="600" />
+  <line class="s" x1="450" y1="450" x2="370" y2="480" />
+  <line class="s" x1="450" y1="450" x2="530" y2="480" />
+  <line class="s" x1="450" y1="410" x2="378" y2="442" />
+  <line class="s" x1="450" y1="410" x2="522" y2="442" />
+  <!-- text -->
+  <text class="t" x="900" y="490" text-anchor="start">ป่าโนนนิเวศน์</text>
+</svg>

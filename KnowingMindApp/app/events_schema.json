@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "KnowingMindAppEvents",
+  "type": "object",
+  "properties": {
+    "event": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "user_id": { "type": "string" },
+    "session_id": { "type": "string" },
+
+    "origin": { "type": "string", "enum": ["home", "book", "challenge", "link"] },
+    "surface": { "type": "string", "enum": ["android", "ios", "web"] },
+
+    "duration_ms": { "type": "integer" },
+    "streak": { "type": "integer" },
+
+    "channel": { "type": "string", "enum": ["facebook", "instagram", "youtube", "tiktok", "line"] },
+
+    "book_id": { "type": "string" },
+    "page": { "type": "integer" },
+
+    "chant_id": { "type": "string" },
+    "seconds": { "type": "integer" },
+
+    "method": { "type": "string", "enum": ["promptpay", "bank", "credit", "link"] },
+    "amount": { "type": "number" },
+    "currency": { "type": "string", "pattern": "^[A-Z]{3}$" }
+  },
+  "required": ["event", "timestamp", "user_id"],
+  "additionalProperties": true
+}

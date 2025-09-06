@@ -1,0 +1,3 @@
+﻿duty_id,duty_name,description,min_people,start_time,end_time,location,required_skills,training_doc_id,rotate_on,priority
+D001,ทำความสะอาดศาลา,กวาด-ถู-เช็ดโต๊ะ เก็บขยะ,2,06:00,07:00,ศาลาการเปรียญ,ทำความสะอาด,T001,sevenday,high
+D002,ครัวเช้า,เตรียมอาหารเช้า ล้างภาชนะ,3,04:30,06:30,โรงครัว,ครัว,T002,sevenday,high

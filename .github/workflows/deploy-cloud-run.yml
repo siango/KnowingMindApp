@@ -1,0 +1,66 @@
+name: deploy-cloud-run
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  GCP_REGION:     ${{ secrets.GCP_REGION }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - service: arunroo-ics
+            path: services/arunroo-ics
+            port: "3000"
+            env: NODE_ENV=production
+          - service: satishift-webhook
+            path: services/satishift-webhook
+            port: "4000"
+            env: NODE_ENV=production
+          - service: kma-api
+            path: services/kma-api
+            port: "5000"
+            env: NODE_ENV=production,ENABLE_FIRESTORE=true
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Auth via WIF
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
+          service_account:           ${{ secrets.GCP_SA_EMAIL }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - name: Ensure Artifact Registry
+        run: |
+          gcloud services enable run.googleapis.com artifactregistry.googleapis.com cloudbuild.googleapis.com --project "$GCP_PROJECT_ID"
+          gcloud artifacts repositories describe run --location "$GCP_REGION" --project "$GCP_PROJECT_ID" || \
+          gcloud artifacts repositories create run --repository-format=docker --location "$GCP_REGION" --description="Images for Cloud Run"
+
+      - name: Build & Push (Cloud Build)
+        id: build
+        run: |
+          IMAGE="${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/run/${{ matrix.service }}:${{ github.sha }}"
+          echo "IMAGE=$IMAGE" >> $GITHUB_OUTPUT
+          gcloud builds submit "${{ matrix.path }}" --tag "$IMAGE" --project "$GCP_PROJECT_ID"
+
+      - name: Deploy
+        run: |
+          gcloud run deploy "${{ matrix.service }}" \
+            --image "${{ steps.build.outputs.IMAGE }}" \
+            --region "$GCP_REGION" \
+            --project "$GCP_PROJECT_ID" \
+            --allow-unauthenticated \
+            --port "${{ matrix.port }}" \
+            --set-env-vars "${{ matrix.env }}"

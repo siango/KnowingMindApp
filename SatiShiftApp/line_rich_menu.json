@@ -1,0 +1,83 @@
+{
+  "size": {
+    "width": 2500,
+    "height": 1686
+  },
+  "selected": true,
+  "name": "SatiShift Main",
+  "chatBarText": "เมนูสติเวร",
+  "areas": [
+    {
+      "bounds": {
+        "x": 80,
+        "y": 80,
+        "width": 700,
+        "height": 700
+      },
+      "action": {
+        "type": "message",
+        "text": "เวรวันนี้"
+      }
+    },
+    {
+      "bounds": {
+        "x": 900,
+        "y": 80,
+        "width": 700,
+        "height": 700
+      },
+      "action": {
+        "type": "message",
+        "text": "เวรสัปดาห์นี้"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1720,
+        "y": 80,
+        "width": 700,
+        "height": 700
+      },
+      "action": {
+        "type": "message",
+        "text": "เวรวันพระถัดไป"
+      }
+    },
+    {
+      "bounds": {
+        "x": 80,
+        "y": 886,
+        "width": 700,
+        "height": 700
+      },
+      "action": {
+        "type": "message",
+        "text": "สอนงาน D001"
+      }
+    },
+    {
+      "bounds": {
+        "x": 900,
+        "y": 886,
+        "width": 700,
+        "height": 700
+      },
+      "action": {
+        "type": "message",
+        "text": "ขอสลับเวร"
+      }
+    },
+    {
+      "bounds": {
+        "x": 1720,
+        "y": 886,
+        "width": 700,
+        "height": 700
+      },
+      "action": {
+        "type": "message",
+        "text": "ช่วยเหลือ"
+      }
+    }
+  ]
+}

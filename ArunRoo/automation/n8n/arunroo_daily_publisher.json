@@ -1,0 +1,214 @@
+{
+  "name": "ArunRoo – Daily Publisher (Every 5m)",
+  "nodes": [
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyX",
+              "unit": "minutes",
+              "value": 5
+            }
+          ]
+        }
+      },
+      "id": "Cron1",
+      "name": "Cron – Every 5 minutes",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        280,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "filePath": "={{$env.POSTMAP_PATH || './outputs/postmap_2025-08_to_2025-09.csv'}}",
+        "binaryPropertyName": "data"
+      },
+      "id": "ReadFile1",
+      "name": "Read Binary File (postmap)",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "typeVersion": 1,
+      "position": [
+        520,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "binaryPropertyName": "data",
+        "options": {
+          "headerRow": true
+        }
+      },
+      "id": "Spreadsheet1",
+      "name": "Spreadsheet → JSON",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 1,
+      "position": [
+        760,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// คัดเฉพาะโพสต์ที่เวลาถึง (±5 นาที)\nconst now = new Date();\nreturn items.filter(it => {\n  const dt = new Date(it.json.datetime);\n  const diffMin = (dt - now) / 60000;\n  return diffMin >= -5 && diffMin <= 5 && (it.json.status || 'pending') === 'pending';\n});"
+      },
+      "id": "FuncFilter",
+      "name": "Function – filter due",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// route: facebook / instagram / youtube / tiktok\nreturn items.map(it => ({json: it.json, pairedItem: {item: $itemIndex}}));"
+      },
+      "id": "FuncRoute",
+      "name": "Function – route by platform",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://graph.facebook.com/v19.0/{{ $json.page_id || 'PAGE_ID' }}/photos",
+        "options": {}
+      },
+      "id": "HTTP_FB",
+      "name": "HTTP – Facebook (example)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1480,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://graph.facebook.com/v19.0/{{ $json.ig_business_id || 'IG_BUSINESS_ID' }}/media"
+      },
+      "id": "HTTP_IG",
+      "name": "HTTP – Instagram (example create media)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1480,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://www.googleapis.com/upload/youtube/v3/videos"
+      },
+      "id": "HTTP_YT",
+      "name": "HTTP – YouTube (example)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1480,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://open-api.tiktok.com/..."
+      },
+      "id": "HTTP_TT",
+      "name": "HTTP – TikTok (example)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1480,
+        540
+      ]
+    }
+  ],
+  "connections": {
+    "Read Binary File (postmap)": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet → JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cron – Every 5 minutes": {
+      "main": [
+        [
+          {
+            "node": "Read Binary File (postmap)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spreadsheet → JSON": {
+      "main": [
+        [
+          {
+            "node": "Function – filter due",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function – filter due": {
+      "main": [
+        [
+          {
+            "node": "Function – route by platform",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function – route by platform": {
+      "main": [
+        [
+          {
+            "node": "HTTP – Facebook (example)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP – Instagram (example create media)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP – YouTube (example)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP – TikTok (example)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
