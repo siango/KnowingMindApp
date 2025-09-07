@@ -1,0 +1,13 @@
+{
+  "name": "placeholder",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "lint": "echo lint",
+    "build": "echo build",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

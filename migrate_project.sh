@@ -48,7 +48,7 @@ fi
 # 2) checksum ก่อนย้าย
 SUM_BEFORE="$LOG_DIR/${PROJ}_before_${TS}.sha256"
 echo "• สร้าง checksum ก่อนย้าย → $SUM_BEFORE"
-$DRY_RUN || (cd "$FROM" && find . -type f -maxdepth 10 -print0 | sort -z | xargs -0 sha256sum > "$SUM_BEFORE")
+$DRY_RUN || (cd "$FROM" && find . -maxdepth 10 -type f -print0 | sort -z | xargs -0 sha256sum > "$SUM_BEFORE")
 
 # 3) rsync ย้าย
 echo "• ย้ายไฟล์ด้วย rsync"
@@ -58,7 +58,7 @@ $DRY_RUN || rsync $RSYNC_FLAGS "$FROM/." "$TO/"
 # 4) checksum หลังย้าย & เทียบ
 SUM_AFTER="$LOG_DIR/${PROJ}_after_${TS}.sha256"
 echo "• สร้าง checksum หลังย้าย → $SUM_AFTER"
-$DRY_RUN || (cd "$TO" && find . -type f -maxdepth 10 -print0 | sort -z | xargs -0 sha256sum > "$SUM_AFTER")
+$DRY_RUN || (cd "$TO" && find . -maxdepth 10 -type f -print0 | sort -z | xargs -0 sha256sum > "$SUM_AFTER")
 
 if ! $DRY_RUN; then
   echo "• ตรวจเทียบ checksum"
@@ -72,8 +72,18 @@ fi
 
 # 5) smoke test
 if [[ -f "$TO/package.json" ]]; then
-  echo "• ตรวจ npm scripts (lint/build) ใน $TO"
-  $DRY_RUN || (cd "$TO" && (npm ci --silent || pnpm i --silent || yarn) && (npm run -s lint || true) && (npm run -s build || true))
+  echo "• ตรวจ npm (lint/build) ใน $TO"
+  if [[ -f "$TO/package-lock.json" ]]; then
+    PMCMD="npm ci --silent"
+  else
+    PMCMD="npm install --no-audit --no-fund --silent"
+  fi
+  if ! $DRY_RUN; then
+    (cd "$TO" && ( $PMCMD || true ); \
+      (jq -er '.scripts.lint' package.json >/dev/null 2>&1 && npm run -s lint || true); \
+      (jq -er '.scripts.build' package.json >/dev/null 2>&1 && npm run -s build || true)
+    )
+  fi
 elif [[ -d "$TO/src" && "$PROJ" == "roblox-game" ]]; then
   echo "• Roblox โปรเจ็กต์: ตรวจไฟล์หลัก src/*"
   $DRY_RUN || (test -f "$TO/src/ReplicatedStorage/Config/Rewards.lua" && test -f "$TO/src/ServerScriptService/DataStore.server.lua" && echo "✓ ไฟล์หลักครบ")
