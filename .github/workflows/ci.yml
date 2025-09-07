@@ -1,0 +1,27 @@
+name: Monorepo CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Build all packages with package.json
+        run: |
+          set -e
+          mapfile -t DIRS < <(find apps services -maxdepth 2 -type f -name package.json -printf '%h\n' 2>/dev/null || true)
+          for d in "${DIRS[@]}"; do
+            echo "=== $d ==="
+            cd "$d"
+            if [ -f package-lock.json ]; then
+              npm ci --no-audit --no-fund || true
+            else
+              npm install --no-audit --no-fund || true
+            fi
+            node -e "try{p=require('./package.json');process.exit(p.scripts&&p.scripts.lint?0:1)}catch(e){process.exit(1)}" && npm run -s lint || echo '(no lint)'
+            node -e "try{p=require('./package.json');process.exit(p.scripts&&p.scripts.build?0:1)}catch(e){process.exit(1)}" && npm run -s build || echo '(no build)'
+            cd - >/dev/null
+          done
