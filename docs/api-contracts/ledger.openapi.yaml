@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info: { title: Ledger API, version: 1.0.0 }
+paths:
+  /ledger/earn:
+    post:
+      summary: Earn symbolic coins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Earn'
+      responses:
+        "200": { description: ok }
+components:
+  schemas:
+    Earn:
+      type: object
+      required: [anonId, source, amount]
+      properties:
+        anonId: { type: string }
+        source: { type: string, enum: [merit, habit, debt, quest] }
+        amount: { type: number, minimum: 1, maximum: 200 }

@@ -1,0 +1,46 @@
+{
+  "kma": {
+    "from": "/data/data/com.termux/files/home/storage/shared/Projects/kma",
+    "to": "$HOME/knowingmind-suite/apps/kma"
+  },
+  "arunroo": {
+    "from": "/data/data/com.termux/files/home/storage/shared/Projects/arunroo",
+    "to": "$HOME/knowingmind-suite/apps/arunroo"
+  },
+  "satishift": {
+    "from": "/data/data/com.termux/files/home/storage/shared/Projects/satishift",
+    "to": "$HOME/knowingmind-suite/apps/satishift"
+  },
+  "beyond-the-rich": {
+    "from": "/data/data/com.termux/files/home/storage/shared/Projects/ai-make-money",
+    "to": "$HOME/knowingmind-suite/apps/beyond-the-rich"
+  },
+  "roblox-game": {
+    "from": "/data/data/com.termux/files/home/storage/shared/Projects/roblox",
+    "to": "$HOME/knowingmind-suite/apps/roblox-game"
+  },
+  "foundation-admin": {
+    "from": "/data/data/com.termux/files/home/storage/shared/Projects/foundation-admin",
+    "to": "$HOME/knowingmind-suite/apps/foundation-admin"
+  },
+  "impact-dashboard": {
+    "from": "/data/data/com.termux/files/home/storage/shared/Projects/impact-dashboard",
+    "to": "$HOME/knowingmind-suite/apps/impact-dashboard"
+  },
+  "creator-studio": {
+    "from": "/data/data/com.termux/files/home/storage/shared/Projects/creator-studio",
+    "to": "$HOME/knowingmind-suite/apps/creator-studio"
+  },
+  "anumodana-system": {
+    "from": "/data/data/com.termux/files/home/storage/shared/Projects/anumodana-system",
+    "to": "$HOME/knowingmind-suite/apps/anumodana-system"
+  },
+  "sati-finance": {
+    "from": "/data/data/com.termux/files/home/storage/shared/Projects/sati-finance",
+    "to": "$HOME/knowingmind-suite/apps/sati-finance"
+  },
+  "content-automation": {
+    "from": "/data/data/com.termux/files/home/storage/shared/Projects/automation",
+    "to": "$HOME/knowingmind-suite/services/projects"
+  }
+}

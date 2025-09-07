@@ -1,0 +1,24 @@
+openapi: 3.0.3
+info: { title: Journal API, version: 1.0.0 }
+paths:
+  /journal/merit:
+    post:
+      summary: Log a merit entry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Merit'
+      responses:
+        "200": { description: ok }
+components:
+  schemas:
+    Merit:
+      type: object
+      required: [anonId, type]
+      properties:
+        anonId: { type: string }
+        type: { type: string, enum: [donation, share, volunteer] }
+        amount: { type: number }
+        proofUrl: { type: string }
