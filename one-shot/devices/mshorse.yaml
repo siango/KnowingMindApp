@@ -1,0 +1,14 @@
+
+device_id: mshorse
+os: termux          # termux | windows
+hostname_expect: MSHorse
+repo:
+  url: https://github.com/siango/KnowingMindSuite.git
+  path: ~/knowingmind-suite
+  branch: main
+roles: [dashboard, worker]
+cron:
+  - "0 1 * * * ~/kma_health.sh > ~/logs/health.log 2>&1"
+vars:
+  KMA_SERVICE_URL: "https://internal.kma/api"
+  DASH_PUBLISH: "https://siango.github.io/KnowingMindDashboard"

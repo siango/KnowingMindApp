@@ -1,0 +1,2 @@
+| Device | Status | Note |
+|---|---|---|

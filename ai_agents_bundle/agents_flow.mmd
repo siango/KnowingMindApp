@@ -1,0 +1,13 @@
+﻿flowchart LR
+  SCH[Scheduler (à¸­à¸§à¸´à¸Šà¸Šà¸²)] --> PER[Perception (à¸§à¸´à¸à¸à¸²à¸“)]
+  PER --> MMP[Multimodal (à¸™à¸²à¸¡à¸£à¸¹à¸›)]
+  MMP --> MEM[Memory (à¸ªà¸±à¸à¸à¸²)]
+  MEM --> PERM[Persona (à¸­à¸¸à¸›à¸²à¸—à¸²à¸™)]
+  PERM --> RSN[Reasoner (à¸ªà¸±à¸‡à¸‚à¸²à¸£)]
+  RSN --> EXE[Executor (à¸ à¸ž)]
+  EXE --> ORC[Orchestrator (à¸Šà¸²à¸•à¸´)]
+  ORC --> FDB[Feedback (à¹€à¸§à¸—à¸™à¸²)]
+  FDB --> SAF[Safety (à¸•à¸±à¸“à¸«à¸²)]
+  SAF --> QAL[Quality (à¸›à¸£à¸°à¹€à¸¡à¸´à¸™)]
+  QAL --> OBS[Observability (à¸Šà¸£à¸²-à¸¡à¸£à¸“à¸°)]
+  OBS --> SCH

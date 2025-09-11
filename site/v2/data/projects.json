@@ -1,0 +1,84 @@
+{
+  "projects": [
+    {
+      "name": "KnowingMindApp",
+      "progress": 65,
+      "valuation_mln": 45,
+      "health": "OK",
+      "note": "Core app & API on Cloud Run",
+      "link": "#"
+    },
+    {
+      "name": "ArunRoo",
+      "progress": 75,
+      "valuation_mln": 38,
+      "health": "OK",
+      "note": "Daily quotes & Readcast",
+      "link": "#"
+    },
+    {
+      "name": "SatiShift",
+      "progress": 70,
+      "valuation_mln": 32,
+      "health": "WARN",
+      "note": "Webhook + schedule",
+      "link": "#"
+    },
+    {
+      "name": "Suite Infra",
+      "progress": 60,
+      "valuation_mln": 25,
+      "health": "OK",
+      "note": "GCP, WIF, Secrets",
+      "link": "#"
+    },
+    {
+      "name": "AI Creator",
+      "progress": 30,
+      "valuation_mln": 12,
+      "health": "WARN",
+      "note": "MVP pipeline",
+      "link": "#"
+    },
+    {
+      "name": "Foundation / SE",
+      "progress": 25,
+      "valuation_mln": 8,
+      "health": "WARN",
+      "note": "Docs & governance",
+      "link": "#"
+    },
+    {
+      "name": "Donation Module",
+      "progress": 20,
+      "valuation_mln": 7,
+      "health": "WARN",
+      "note": "PromptPay + Receipts",
+      "link": "#"
+    },
+    {
+      "name": "Ops Services",
+      "progress": 15,
+      "valuation_mln": 6,
+      "health": "WARN",
+      "note": "Workforce, attendance",
+      "link": "#"
+    },
+    {
+      "name": "Content & Growth",
+      "progress": 55,
+      "valuation_mln": 18,
+      "health": "OK",
+      "note": "Publishing automation",
+      "link": "#"
+    },
+    {
+      "name": "Game / Roblox",
+      "progress": 20,
+      "valuation_mln": null,
+      "health": "WARN",
+      "note": "Prototype",
+      "link": "#"
+    }
+  ]
+}

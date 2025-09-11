@@ -1,0 +1,12 @@
+device_id: oppo-reno13
+os: termux
+hostname_expect: OPPO-RENO13
+repo:
+  url: https://github.com/siango/KnowingMindSuite.git
+  path: ~/knowingmind-suite
+  branch: main
+roles: [worker]
+cron:
+  - "10 9 * * * ~/kma_health.sh > ~/logs/oppo_reno13_health.log 2>&1"
+vars:
+  DEVICE_CHANNEL: "android"
