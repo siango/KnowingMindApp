@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>KMS • Time Console</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<style>
+  :root{
+    --bg:#0b1020;--card:#151c32;--muted:#9fb0d6;--ok:#79ffa2;--warn:#f2c94c;--bad:#ff6b6b;--ink:#e9eef9;--pill:#1f2744;
+  }
+  *{box-sizing:border-box} body{font-family:system-ui,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:20px}
+  .wrap{max-width:1100px;margin:auto}
+  h1{margin:0 0 8px} .muted{color:var(--muted)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 14px}
+  .card{background:var(--card);border-radius:16px;padding:16px;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .pill{background:var(--pill);border-radius:999px;padding:8px 12px;display:inline-flex;gap:8px;align-items:center}
+  .ok{color:var(--ok)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+  input,button{background:#0f1430;color:var(--ink);border:1px solid #273057;border-radius:10px;padding:8px 10px}
+  button{cursor:pointer} .right{margin-left:auto}
+  pre{white-space:pre-wrap;background:#0f1430;border-radius:12px;padding:12px;overflow:auto}
+  .k{font-weight:700}
+  @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row">
+    <div>
+      <h1>Time Console</h1>
+      <div class="muted">Central Time • Reminders • Schedules • Timeline</div>
+    </div>
+    <div class="right pill"><span id="clock">--:--:--</span></div>
+  </div>
+
+  <div class="card row">
+    <label>CDH Base:&nbsp;<input id="base" size="40" value="https://cdh.knowingmindproject.website"></label>
+    <label class="right">ค้นหา:&nbsp;<input id="q" placeholder="พิมพ์คำเพื่อกรอง"></label>
+    <button id="refresh" class="right">รีเฟรช</button>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Reminders <span id="remCount" class="muted"></span></h3>
+      <div id="reminders">loading…</div>
+    </div>
+    <div class="card">
+      <h3>Schedules <span id="schCount" class="muted"></span></h3>
+      <div id="schedules">loading…</div>
+    </div>
+    <div class="card">
+      <h3>Timeline <span id="tlStamp" class="muted"></span></h3>
+      <div><strong>Present</strong><div id="present"></div></div>
+      <div style="margin-top:10px"><strong>Future</strong><div id="future"></div></div>
+      <div style="margin-top:10px"><strong>Past</strong><div id="past"></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>RAW</h3>
+    <pre id="raw">loading…</pre>
+  </div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const base = $("#base");
+const q = $("#q");
+
+function pill(text, cls=""){ const d=document.createElement('div'); d.className='pill '+cls; d.textContent=text; return d; }
+
+function filterTxt(txt){ const term=q.value.trim().toLowerCase(); return !term || (txt||"").toLowerCase().includes(term); }
+
+async function load(){
+  const B = base.value.replace(/\/$/,'');
+  const urls = {
+    rem: B + "/kms_time_reminders.json",
+    sch: B + "/kms_time_schedules.json",
+    tl : B + "/kms_status_timeline.json"
+  };
+  try{
+    const [rem,sch,tl] = await Promise.all([
+      fetch(urls.rem,{cache:"no-store"}).then(r=>r.json()),
+      fetch(urls.sch,{cache:"no-store"}).then(r=>r.json()),
+      fetch(urls.tl ,{cache:"no-store"}).then(r=>r.json())
+    ]);
+
+    // Reminders
+    const R = $("#reminders"); R.innerHTML = "";
+    (rem.reminders||[]).filter(x=>filterTxt(JSON.stringify(x))).forEach(r=>{
+      const d=pill(`${r.when} • ${r.message}`, "ok"); R.appendChild(d);
+    });
+    $("#remCount").textContent = `(${(rem.reminders||[]).length})`;
+
+    // Schedules
+    const S = $("#schedules"); S.innerHTML = "";
+    (sch.schedules||[]).filter(x=>filterTxt(JSON.stringify(x))).forEach(s=>{
+      const d=pill(`${s.pattern} → ${s.task}`, "warn"); S.appendChild(d);
+    });
+    $("#schCount").textContent = `(${(sch.schedules||[]).length})`;
+
+    // Timeline
+    $("#present").innerHTML = ""; $("#future").innerHTML = ""; $("#past").innerHTML = "";
+    if (tl.present){
+      Object.entries(tl.present).filter(([k,v])=>filterTxt(k+v)).forEach(([k,v])=>{
+        const cls = v==="live"?"ok":(v==="in-progress"?"warn":"bad");
+        $("#present").appendChild(pill(`${k}: ${v}`, cls));
+      });
+    }
+    (tl.future||[]).filter(x=>filterTxt(JSON.stringify(x))).forEach(f=>{
+      $("#future").appendChild(pill(`${f.target||''} • ${f.plan}`, "warn"));
+    });
+    (tl.past||[]).slice(-6).reverse().filter(x=>filterTxt(JSON.stringify(x))).forEach(p=>{
+      $("#past").appendChild(pill(`${p.ts||''} • ${p.event}`, "ok"));
+    });
+    $("#tlStamp").textContent = tl.updated_at ? `updated ${tl.updated_at}` : "";
+
+    // RAW
+    $("#raw").textContent = JSON.stringify({rem,sch,tl}, null, 2);
+  }catch(e){
+    $("#raw").textContent = "Fetch error: "+e.message+"\nโปรดตรวจ CDH Base ให้ถูกต้อง";
+  }
+}
+
+$("#refresh").onclick = load;
+q.oninput = load;
+base.onchange = load;
+
+setInterval(()=>{ const d=new Date(); $("#clock").textContent=d.toLocaleTimeString(); },1000);
+setInterval(load, 15000); // auto-refresh 15s
+load();
+</script>
+</body>
+</html>
