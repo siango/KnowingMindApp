@@ -1,0 +1,36 @@
+{
+  "events": [
+    {
+      "name": "app_start",
+      "params": ["origin", "surface"]
+    },
+    {
+      "name": "practice_start",
+      "params": ["origin", "surface"]
+    },
+    {
+      "name": "practice_complete",
+      "params": ["duration_ms", "streak"]
+    },
+    {
+      "name": "share_card",
+      "params": ["channel"]
+    },
+    {
+      "name": "book_open",
+      "params": ["book_id", "page"]
+    },
+    {
+      "name": "chant_play",
+      "params": ["chant_id", "seconds"]
+    },
+    {
+      "name": "donation_initiated",
+      "params": ["method"]
+    },
+    {
+      "name": "donation_success",
+      "params": ["amount", "currency"]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+﻿name: Android CI
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure gradlew executable & LF
+        run: |
+          # เผื่อบางกรณี line-ending เพี้ยนตอน checkout
+          sed -i 's/\r$//' gradlew || true
+          chmod +x gradlew
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Gradle Build
+        run: ./gradlew clean assembleDebug test

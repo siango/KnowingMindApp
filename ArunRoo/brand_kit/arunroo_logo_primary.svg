@@ -1,0 +1,7 @@
+<svg width="1024" height="256" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="256" fill="#F7F5F0"/>
+  <circle cx="128" cy="128" r="96" fill="#2D2A32"/>
+  <circle cx="128" cy="108" r="28" fill="#F2C94C"/>
+  <ellipse cx="128" cy="150" rx="60" ry="20" fill="#2F806B"/>
+  <text x="260" y="150" font-size="64" font-family="sans-serif" fill="#2D2A32">อรุณรู้ (ArunRoo)</text>
+</svg>

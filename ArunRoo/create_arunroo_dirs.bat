@@ -1,0 +1,20 @@
+@echo off
+set BASE=%~dp0arunroo_project
+mkdir "%BASE%\brand\logo_panonniwet"
+mkdir "%BASE%\content\quotes\2025-08"
+mkdir "%BASE%\content\greetings"
+mkdir "%BASE%\content\captions"
+mkdir "%BASE%\prompts\image"
+mkdir "%BASE%\prompts\video"
+mkdir "%BASE%\assets\images_src"
+mkdir "%BASE%\assets\images_final\square"
+mkdir "%BASE%\assets\images_final\portrait"
+mkdir "%BASE%\assets\images_final\story"
+mkdir "%BASE%\assets\videos_final"
+mkdir "%BASE%\schedules"
+mkdir "%BASE%\automation\n8n"
+mkdir "%BASE%\automation\scripts"
+mkdir "%BASE%\logs"
+mkdir "%BASE%\docs"
+mkdir "%BASE%\outputs\reports"
+echo สร้างโครงสร้างโฟลเดอร์ ArunRoo เสร็จแล้ว: %BASE%

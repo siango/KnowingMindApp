@@ -1,0 +1,9 @@
+{
+  "fairness": {
+    "avoidRepeatWithinDays": 28
+  },
+  "constraints": {
+    "respectAvailability": true,
+    "matchRequiredSkills": true
+  }
+}

@@ -1,0 +1,57 @@
+diff --git a/.github/workflows/android-ci.yml b/.github/workflows/android-ci.yml
+new file mode 100644
+index 0000000..a1b2c3d
+--- /dev/null
++++ b/.github/workflows/android-ci.yml
+@@ -0,0 +1,27 @@
++name: Android CI
++on: [push, pull_request]
++jobs:
++  build:
++    runs-on: ubuntu-latest
++    steps:
++      - name: Checkout
++        uses: actions/checkout@v4
++      - name: Setup Java
++        uses: actions/setup-java@v4
++        with:
++          distribution: temurin
++          java-version: '17'
++      - name: Gradle Build
++        run: ./gradlew clean assembleDebug test
++
+diff --git a/CHECKLIST_D0.md b/CHECKLIST_D0.md
+new file mode 100644
+index 0000000..d4e5f6a
+--- /dev/null
++++ b/CHECKLIST_D0.md
+@@ -0,0 +1,55 @@
++# D0 Kickoff Checklist — 2025-08-27 (Asia/Bangkok)
++
++## 1) โครงสร้าง & ไฟล์สำคัญ
++- [ ] media/images/ (Infographic_Taru_TH.png, Infographic_Taru_TH_EN.png)
++- [ ] content/ (LPKhem_Media_Starter_Kit_2025-08-26.zip)
++- [ ] calendar/ (Unified_SprintPlan_2025-08-27_withRetro.ics)
++- [ ] docs/ (Book_Full_Master_v14_withAppendix_Taru.docx)
++- [ ] .github/workflows/android-ci.yml
++
++## 2) CI & Build
++- [ ] GitHub Actions แสดง workflow "Android CI"
++- [ ] push ล่าสุดรันสำเร็จ (สีเขียว)
++- [ ] ./gradlew clean assembleDebug รันผ่านในเครื่อง
++
++## 3) Git Hygiene
++- [ ] .gitignore มี: .idea/, .vscode/, *.iml, local.properties, /build, /.gradle
++- [ ] ไม่ track: .idea/*, local.properties
++- [ ] commit message วันนี้สั้นแต่ชัด
++- [ ] (ตัวเลือก) tag: v0.1.0-P0-setup
++
++## 4) ผลลัพธ์วันนี้ (ย่อ)
++- โครงสร้างพร้อมเริ่ม P1
++- media/content/calendar/docs พร้อม
++- CI auto-run เมื่อ push/PR
++
++## 5) Next (พรุ่งนี้)
++- P1 Library: Reader (text) + UI รายการ + Theme
++- Catalog: whitelist + download indicator
++- Chanting: JSON importer + bookmark

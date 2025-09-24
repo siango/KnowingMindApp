@@ -1,0 +1,39 @@
+﻿# Node
+**/node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-store/
+.npm/
+
+# Builds / Caches
+**/dist/
+**/build/
+**/.next/
+**/.cache/
+
+# Env & secrets
+**/.env
+**/.env.*.local
+
+# Android / IDE
+**/.gradle/
+**/build/
+**/.idea/
+*.iml
+local.properties
+
+# VS Code
+.vscode/
+
+# Python
+**/__pycache__/
+**/.venv/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+/
+app/google-services.json
+**/google-services.json
+

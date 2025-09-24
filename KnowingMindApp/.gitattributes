@@ -1,0 +1,26 @@
+# Normalize text files to LF by default
+* text=auto eol=lf
+
+# Binary assets
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.pdf binary
+*.apk binary
+*.aab binary
+
+# Improve diffs
+*.md diff=markdown
+*.java diff=java
+*.kt diff=java
+*.kts diff=java
+*.gradle diff=java
+*.xml diff=xml
+
+# Platform-specific line endings
+*.ps1  text eol=crlf
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+*.sh   text eol=lf

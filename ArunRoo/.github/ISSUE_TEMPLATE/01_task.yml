@@ -1,0 +1,17 @@
+name: Task
+description: งาน/ฟีเจอร์ย่อย
+title: "[Task] "
+labels: ["task"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: รายละเอียด
+      description: อธิบายงานที่จะทำ
+    validations:
+      required: true
+  - type: input
+    id: done
+    attributes:
+      label: เกณฑ์เสร็จ (Definition of Done)
+      placeholder: ตัวอย่างเช่น ผ่านการทดสอบ/มีตัวอย่างใช้งาน
