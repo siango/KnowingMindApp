@@ -1,0 +1,13 @@
+const express = require('express');
+const compression = require('compression');
+const cors = require('cors');
+const path = require('path');
+const app = express();
+app.use(compression());
+app.use(cors());
+const pub = path.join(__dirname, 'public');
+app.use((_,res,next)=>{ res.set('Cache-Control','public, max-age=30'); next(); });
+app.use(express.static(pub,{etag:true}));
+app.get('/api/ping', (_,res)=>res.json({ok:true, ts:new Date().toISOString()}));
+const port = process.env.PORT || 8080;
+app.listen(port, ()=> console.log('cdh-host up on :' + port));

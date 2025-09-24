@@ -1,0 +1,40 @@
+<!doctype html><html lang="th"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>KMS Dashboard (CDH)</title>
+<style>
+body{font-family:system-ui,Segoe UI,Arial,sans-serif;margin:24px;background:#0b1020;color:#e9eef9}
+.card{background:#151c32;border-radius:16px;padding:20px;box-shadow:0 6px 18px rgba(0,0,0,.2);max-width:980px}
+h1{margin:0 0 10px;font-weight:700}.muted{opacity:.75}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px}
+.pill{background:#1f2744;border-radius:999px;padding:8px 12px;display:inline-flex;gap:8px;align-items:center}
+.ok{color:#79ffa2}.bad{color:#ff6b6b}
+pre{white-space:pre-wrap;background:#0f1430;border-radius:12px;padding:12px;overflow:auto}
+</style></head><body>
+<div class="card">
+<h1>KnowingMind Dashboard <span class="muted">(CDH live)</span></h1>
+<div class="muted">Source: <code id="src"></code></div>
+<div class="grid" id="stats"></div>
+<h3>Raw</h3><pre id="raw">loading…</pre>
+</div>
+<script>
+const CDH = "https://cdh.knowingmindproject.website";
+const SNAP = CDH + "/kms_snapshot_latest.json";
+document.getElementById('src').textContent = SNAP;
+async function main(){
+  try{
+    const r = await fetch(SNAP,{cache:"no-store"});
+    const j = await r.json();
+    const g = document.getElementById('stats'); g.innerHTML="";
+    (j.projects||[]).forEach(p=>{
+      const d=document.createElement('div'); d.className='pill';
+      const ok = p.progress>=60?'ok':'bad';
+      d.innerHTML = `<strong>${p.name}</strong> <span class="${ok}">${p.progress}%</span>`;
+      g.appendChild(d);
+    });
+    document.getElementById('raw').textContent = JSON.stringify(j,null,2);
+  }catch(e){
+    document.getElementById('raw').textContent = "Fetch error: "+e.message+"\nตรวจ DNS: cdh -> ghs.googlehosted.com และรอ cert พร้อม";
+  }
+}
+main();
+</script></body></html>

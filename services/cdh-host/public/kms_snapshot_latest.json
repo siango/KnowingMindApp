@@ -1,0 +1,10 @@
+{
+  "updated_at": "2025-09-24T12:56:10Z",
+  "status": "ok",
+  "notes": "sample snapshot; replace by your CDH generator",
+  "projects": [
+    {"name":"KMA","progress":60},
+    {"name":"ArunRoo","progress":55},
+    {"name":"SatiShift","progress":65}
+  ]
+}

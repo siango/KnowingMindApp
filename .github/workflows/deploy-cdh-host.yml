@@ -1,0 +1,36 @@
+name: Deploy CDH Host
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'services/cdh-host/**'
+      - '.github/workflows/deploy-cdh-host.yml'
+jobs:
+  deploy:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: 'projects/610232224779/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
+          service_account: 'cicd-deployer@knowing-mind-app.iam.gserviceaccount.com'
+      - uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: 'knowing-mind-app'
+      - name: Enable APIs
+        run: |
+          gcloud services enable run.googleapis.com artifactregistry.googleapis.com dns.googleapis.com --project 'knowing-mind-app'
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy 'cdh-host'             --source './services/cdh-host'             --region 'asia-southeast1'             --allow-unauthenticated             --service-account 'svc-runtime@knowing-mind-app.iam.gserviceaccount.com'             --project 'knowing-mind-app'
+      - name: Domain mapping
+        run: |
+          set -e
+          gcloud run domain-mappings describe --domain 'cdh.knowingmindproject.website' --region 'asia-southeast1' --project 'knowing-mind-app'           || gcloud run domain-mappings create --domain 'cdh.knowingmindproject.website' --service 'cdh-host' --region 'asia-southeast1' --project 'knowing-mind-app'
+          gcloud run domain-mappings describe --domain 'cdh.knowingmindproject.website' --region 'asia-southeast1' --project 'knowing-mind-app' --format=json > domain_mapping.json
+          echo "==== Resource Records (add to DNS if needed) ===="
+          cat domain_mapping.json | jq -r '.status.resourceRecords[] | "Type=\(.type) Name=\(.name) Value=\(.rrdata)"' || true
